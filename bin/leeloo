@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var leeloo = require("../lib/leeloo"),
+	cmd = process.argv[2] || "help",
+	net = require("net"),
+	deliverCommand = function(command, callback) {
+		var conn = net.createConnection(1997),
+			response = "";
+
+		conn.setEncoding("utf8");
+		conn.on("connect", function() { conn.end(command); });
+		conn.on("close", function(error) { });
+		conn.on("data", function(chunk) { response += chunk; });
+		conn.on("end", function() { callback(null, response); });
+		conn.on("error", function(error) { callback(error); });
+	};
+
+switch (cmd) {
+	case "start-server":
+		leeloo.startServer(function(error) {
+			error && console.log(error.message);
+		});
+		break;
+	case "stop-server":
+		deliverCommand("stopServer", function(error, response) {
+			console.log(response);
+			process.exit();
+		});
+		break;		
+	default:
+		leeloo.help(function() {
+			process.exit();
+		});
+}
+
