@@ -1,0 +1,24 @@
+{
+	"mongodb": {
+        "datastore": "ds",
+		"collection": "jobs",
+        "username": "authuser",
+        "password": "authpw",
+        "replica_set_name": "repl"
+        "servers": [
+	        {
+	            "host": "127.0.0.1",
+	            "port": 27017
+	        },
+	        {
+	            "host": "127.0.0.1",
+	            "port": 27018
+	        },
+	        {
+	            "host": "127.0.0.1",
+	            "port": 27019
+	        }
+        ],
+        "using_replica_sets": false
+    }
+}

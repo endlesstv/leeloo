@@ -11,14 +11,14 @@ var leeloo = require("../lib/leeloo"),
 		conn.on("connect", function() { conn.end(JSON.stringify(command)); });
 		conn.on("close", function(error) { });
 		conn.on("data", function(chunk) { response += chunk; });
-		conn.on("end", function() { callback(null, response); });
-		conn.on("error", function(error) { callback(error); });
+		conn.on("end", function() { callback && callback(null, response); });
+		conn.on("error", function(error) { callback && callback(error); });
 	};
 
 switch (cmd) {
-	case "enqueue":
+	case "schedule":
 		var when = process.argv[3] && !isNaN(process.argv[3]) || 10000;
-		deliverCommand({"command": "enqueue"})
+		deliverCommand({"command": "schedule"})
 		break;
 	case "start-server":
 		leeloo.startServer(function(error) {
