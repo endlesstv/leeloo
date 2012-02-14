@@ -1,0 +1,18 @@
+{
+    "author": "Tip or Skip <tech@tiporskip.com>",
+	"contributors": [
+		{"name": "Christopher John", "email": "chris@tiporskip.com"}
+	],
+    "name": "leeloo",
+    "description": "Tip or Skip job queue server.",
+    "version": "0.0.2",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/tiporskip/leeloo.git"
+    },
+    "keywords": ["tip", "tip or skip", "job", "queue", "server"],
+    "main": "./lib/leeloo",
+    "engines": {
+      "node": ">= 0.6.0"
+    }
+}

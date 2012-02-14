@@ -8,7 +8,7 @@ var leeloo = require("../lib/leeloo"),
 			response = "";
 
 		conn.setEncoding("utf8");
-		conn.on("connect", function() { conn.end(command); });
+		conn.on("connect", function() { conn.end(JSON.stringify(command)); });
 		conn.on("close", function(error) { });
 		conn.on("data", function(chunk) { response += chunk; });
 		conn.on("end", function() { callback(null, response); });
@@ -16,13 +16,17 @@ var leeloo = require("../lib/leeloo"),
 	};
 
 switch (cmd) {
+	case "enqueue":
+		var when = process.argv[3] && !isNaN(process.argv[3]) || 10000;
+		deliverCommand({"command": "enqueue"})
+		break;
 	case "start-server":
 		leeloo.startServer(function(error) {
 			error && console.log(error.message);
 		});
 		break;
 	case "stop-server":
-		deliverCommand("stopServer", function(error, response) {
+		deliverCommand({"command": "stopServer"}, function(error, response) {
 			console.log(response);
 			process.exit();
 		});
