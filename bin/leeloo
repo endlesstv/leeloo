@@ -11,11 +11,31 @@ var leeloo = require("../lib/leeloo"),
 		conn.on("connect", function() { conn.end(JSON.stringify(command)); });
 		conn.on("close", function(error) { });
 		conn.on("data", function(chunk) { response += chunk; });
-		conn.on("end", function() { callback && callback(null, response); });
+		conn.on("end", function() {
+			callback && callback(null, response && JSON.parse(response)); 
+		});
 		conn.on("error", function(error) { callback && callback(error); });
 	};
 
 switch (cmd) {
+	case "list":
+		deliverCommand({"command": "list"}, function(error, response) {
+			var rlen = (response && response.jobs && response.jobs.length) || 0;
+
+			if (rlen) {
+				response.jobs.forEach(function(job, r) {
+					console.log(job.w, job.t, job.s);
+					
+					if (r == rlen - 1) {
+						process.exit();
+					}
+				});
+			}
+			else {
+				process.exit();
+			}
+		});
+		break;
 	case "schedule":
 		var when = process.argv[3] && !isNaN(process.argv[3]) || 10000;
 		deliverCommand({"command": "schedule"})
