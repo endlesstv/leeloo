@@ -48,11 +48,16 @@ switch (cmd) {
 		break;
 	case "schedule":
 		var when = process.argv[3] && !isNaN(process.argv[3]) || 10000;
-		deliverCommand({"command": "schedule"})
+		deliverCommand({"command": "schedule", "params": {"w": 600000}});
 		break;
 	case "start-server":
 		leeloo.startServer(function(error) {
 			error && console.log(error.message);
+		});
+		break;
+	case "status":
+		deliverCommand({"command": "status"}, function(error, response) {
+			console.log("leeloo has been awake for " + response.uptime + "ms and is currently " + response.status);
 		});
 		break;
 	case "stop-server":
