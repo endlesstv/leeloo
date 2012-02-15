@@ -8,13 +8,23 @@ var leeloo = require("../lib/leeloo"),
 			response = "";
 
 		conn.setEncoding("utf8");
-		conn.on("connect", function() { conn.end(JSON.stringify(command)); });
-		conn.on("close", function(error) { });
-		conn.on("data", function(chunk) { response += chunk; });
+		conn.on("connect", function() { 
+			conn.write(JSON.stringify(command));
+		});
+		conn.on("close", function(error) { 
+		});
+		conn.on("data", function(chunk) { 
+			response = chunk;
+			conn.end();
+		});
+		conn.on("drain", function() { 
+		});
 		conn.on("end", function() {
 			callback && callback(null, response && JSON.parse(response)); 
 		});
-		conn.on("error", function(error) { callback && callback(error); });
+		conn.on("error", function(error) { 
+			callback && callback(error); 
+		});
 	};
 
 switch (cmd) {
