@@ -1,5 +1,0 @@
-#!/usr/bin/env node
-
-var leeloo = require("../lib/leeloo");
-
-leeloo.startServer();
