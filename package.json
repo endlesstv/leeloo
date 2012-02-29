@@ -5,7 +5,7 @@
 	],
     "name": "leeloo",
     "description": "Tip or Skip job queue server.",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "repository": {
       "type": "git",
       "url": "git://github.com/tiporskip/leeloo.git"
