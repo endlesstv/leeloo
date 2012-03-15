@@ -46,6 +46,9 @@ switch (cmd) {
 			}
 		});
 		break;
+	case "cancel-job":
+		deliverCommand({"command": "cancelJob", "params": {"reason": process.argv[4] || "not given", "id": process.argv[3] || "err"}});
+		break;
 	case "schedule":
 		var when = process.argv[3] && !isNaN(process.argv[3]) || 10000;
 		deliverCommand({"command": "schedule", "params": {"w": 600000}});
