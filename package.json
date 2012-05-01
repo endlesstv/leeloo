@@ -6,7 +6,7 @@
 	],
     "name": "leeloo",
     "description": "Tip or Skip job queue server.",
-    "version": "0.4.1",
+    "version": "0.5.1",
     "repository": {
       "type": "git",
       "url": "git://github.com/tiporskip/leeloo.git"
@@ -14,7 +14,7 @@
     "keywords": ["tip", "tip or skip", "job", "queue", "server"],
     "main": "./lib/leeloo",
 	"dependencies": {
-		"mongodb": "0.9.7-1.4"
+		"mongodb": "1.0.x"
 	},
     "engines": {
       "node": ">= 0.6.0"
