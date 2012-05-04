@@ -6,7 +6,7 @@
 	],
     "name": "leeloo",
     "description": "Tip or Skip job queue server.",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "repository": {
       "type": "git",
       "url": "git://github.com/tiporskip/leeloo.git"
@@ -18,5 +18,9 @@
 	},
     "engines": {
       "node": ">= 0.6.0"
-    }
+    },
+	"licenses": [{
+		"type": "MIT",
+		"url": "http://www.opensource.org/licenses/mit-license.php" 
+	}]
 }
