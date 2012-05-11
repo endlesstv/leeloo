@@ -8,7 +8,7 @@ Leeloo is a job scheduling server written in Node.js using a MongoDB database to
 
 ##Client
 
-```
+```javascript
 var LeelooClient = require("leeloo").Client,
 	leeloo_client = new LeelooClient();
 
